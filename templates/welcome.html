@@ -1,0 +1,47 @@
+{% extends 'demo.html' %}
+{% load static %}
+
+{% block body %}
+{% csrf_token %}
+<h1>
+<a href="auth_logout">Logout</a> 
+</h1>
+<center>
+    <h2>All Book Information</h2>
+        <table border="1px">
+            <tr>
+                <th>Id</th>
+                <th>BookName</th>
+                <th>Catagory</th>
+                <th>Price</th>
+                <th>Description</th>
+                <th>PublishDate</th>
+                
+            </tr>
+
+            {% for i in data %}
+
+            <tr>
+                <td>{{i.id}}</td>
+                <td>{{i.product_name}}</td>
+                <td>{{i.category}}</td>
+                <td>{{i.subcategory}}</td>
+                <td>{{i.price}}</td>
+                <td>{{i.desc}}</td>
+                <td>{{i.pub_date}}</td>
+                <td>
+                    <a href="edit?id={{i.id}}">Edit</a>
+
+                    <a href="delete?id={{i.id}}">Delete</a>
+                </td>
+            </tr>
+           
+
+            {% endfor %}
+
+        </table>
+        
+    </center>
+    <a href="auth_logout">Logout</a> 
+  
+{% endblock %}

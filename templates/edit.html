@@ -1,0 +1,36 @@
+{% extends 'demo.html' %}
+{% load static %}
+
+{% block body %}
+
+        {% include 'messages.html' %}
+        <br>
+        <form action="update" method="post">
+            {% csrf_token %}
+            {% for i in data %}
+        <center> 
+            <h2>Update Data</h2>
+            <input type="hidden" name="product_id" value="{{i.id}}">
+            <input type="text" name="product_name" placeholder="Book Name" value="{{i.product_name}}"><br><br>
+            <input type="text" name="category" placeholder="Book Category" value="{{i.category}}"><br><br>
+             <input type="text" name="subcategory" placeholder="Book Subcategory" value="{{i.subcategory}}"><br><br>
+             <input type="number" name="price" placeholder="Book Price" value="{{i.price}}"><br><br>
+              <input type="text" name="desc" placeholder="Description" value="{{i.desc}}"><br><br>
+              <input type="date" name="pub_date" placeholder="Publish Date" value="{{i.pub_date}}"><br><br>
+
+            <button type="submit">Update</button><br>
+        </center> 
+        </form>
+        {% endfor %}
+        <script>
+            setTimeout(function(){
+                if($('#msg').length>0)
+                {
+                    $('#msg').remove();
+                }
+            },2000)
+    </script>
+    
+    
+        {% endblock %}
+   

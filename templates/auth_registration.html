@@ -1,0 +1,76 @@
+{% extends 'demo.html' %}
+{% load static %}
+
+{% block body %}
+
+<div class="row justify-content-center">
+    <div class="col-lg-8 col-xl-7">
+    
+        
+        {% include 'messages.html' %}
+        <form action="auth_save" method="post" >
+            {% csrf_token %}
+            <!-- Name input-->
+            <div class="form-floating mb-3">
+                <input class="form-control"  type="text" name="fname" placeholder="Enter your first name..." data-sb-validations="required" />
+                <label for="name">First name</label>
+                <div class="invalid-feedback" data-sb-feedback="name:required">A name is required.</div>
+            </div>
+            <div class="form-floating mb-3">
+                <input class="form-control"  type="text" name="lname" placeholder="Enter your last name..." data-sb-validations="required" />
+                <label for="name">Last name</label>
+                <div class="invalid-feedback" data-sb-feedback="name:required">A name is required.</div>
+            </div>
+            <!-- Email address input-->
+            <div class="form-floating mb-3">
+                <input class="form-control"  type="email" name="email" placeholder="name@example.com" data-sb-validations="required,email" />
+                <label for="email">Email address</label>
+                <div class="invalid-feedback" data-sb-feedback="email:required">An email is required.</div>
+                <div class="invalid-feedback" data-sb-feedback="email:email">Email is not valid.</div>
+            </div>
+            <!-- password input-->
+            <div class="form-floating mb-3">
+                <input class="form-control" name="password" type="password" placeholder="Enter your name..." data-sb-validations="required" />
+                <label for="name">Password</label>
+                <div class="invalid-feedback" data-sb-feedback="name:required">A name is required.</div>
+            </div>
+           
+            <!-- Submit success message-->
+           
+            <div class="d-none" id="submitSuccessMessage">
+                <div class="text-center mb-3">
+                    <div class="fw-bolder">Form submission successful!</div>
+                    To activate this form, sign up at
+                    <br />
+                    <a href="https://startbootstrap.com/solution/contact-forms">https://startbootstrap.com/solution/contact-forms</a>
+                </div>
+            </div>
+            
+            <div class="d-none" id="submitErrorMessage"><div class="text-center text-danger mb-3">Error sending message!</div></div>
+            <!-- Submit Button-->
+            <button  type="submit">Submit</button>
+        </form>
+        </div>
+        </div>
+        <script>
+            setTimeout(function(){
+                if($('#msg').length>0)
+                {
+                    $('#msg').remove();
+                }
+            },2000)
+    </script>
+        
+
+        {% endblock %}
+
+
+
+
+
+
+
+
+
+
+
